@@ -30,22 +30,39 @@ function App() {
 
   const menu = (
     <Menu>
-      <Menu.Item onClick={() => setCurrentAlphabet(availAlphabets[0])}>
+      <Menu.Item
+        onClick={() => {
+          setCurrentAlphabet(availAlphabets[0]);
+          setCurrentNumber(Math.min(currentNumber, availAlphabets[0].length));
+        }}
+      >
         Я русский
       </Menu.Item>
-      <Menu.Item onClick={() => setCurrentAlphabet(availAlphabets[1])}>
+      <Menu.Item
+        onClick={() => {
+          setCurrentAlphabet(availAlphabets[1]);
+          setCurrentNumber(Math.min(currentNumber, availAlphabets[1].length));
+        }}
+      >
         Americanez
       </Menu.Item>
-      <Menu.Item onClick={() => setCurrentAlphabet(customAlpha)}>
+      <Menu.Item
+        onClick={() => {
+          setCurrentAlphabet(customAlpha);
+          setCurrentNumber(Math.min(currentNumber, customAlpha.length));
+        }}
+      >
         <DropdownInput
           value={customAlpha}
           placeholder="Ваш алфавит"
           onClick={(e) => {
             e.stopPropagation();
             setCurrentAlphabet(customAlpha);
+            setCurrentNumber(Math.min(currentNumber, customAlpha.length));
           }}
           onChange={(e) => {
             setCurrentAlphabet(e.target.value);
+            setCurrentNumber(Math.min(currentNumber, e.target.value.length));
             setCustomAlpha(e.target.value);
           }}
         />

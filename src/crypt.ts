@@ -13,6 +13,7 @@ class Crypt {
     }
     return result;
   }
+
   static decode(message: string, offsetInitial: number, alphabet: string) {
     let newAlpha = '';
     for (let i = 0; i < alphabet.length; i++) {
